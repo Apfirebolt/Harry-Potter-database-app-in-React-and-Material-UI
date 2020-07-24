@@ -37,7 +37,7 @@ class CharactersPage extends Component {
     let { allCharacters } = this.props;
     let { pageNumbers, itemsPerPage, filteredData } = this.state;
     if(allCharacters) {
-      let newPageTotal = Math.ceil(filteredData.length / e.target.value);
+      let newPageTotal = Math.ceil(filteredData.length ? filteredData.length : allCharacters.length / e.target.value);
       this.setState({
         itemsPerPage: e.target.value,
         pageNumbers: newPageTotal
@@ -63,6 +63,7 @@ class CharactersPage extends Component {
       pageNumbers: newPageTotal
     });
   }
+
   render() {
     let { allCharacters } = this.props;
     let { searchText, filteredData, pageNumbers, startIndex, itemsPerPage } = this.state;
@@ -73,7 +74,7 @@ class CharactersPage extends Component {
           onChangeText={this.onChangeText}
           handleItemsChange={this.handleItemsChange}
         />
-        {filteredData ? filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
+        {filteredData && filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
           return (
             <Container key={index}>
               <CharacterContainer key={index}
@@ -82,11 +83,30 @@ class CharactersPage extends Component {
             </Container>
           )
         })
-        : <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>}
+        }
+
+        {!filteredData && allCharacters && allCharacters.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
+          return (
+            <Container key={index}>
+              <CharacterContainer key={index}
+                                  {...item}
+              />
+            </Container>
+          )
+        })
+        }
+
+        {!allCharacters &&
+          <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>
+        }
+
+        {allCharacters &&
         <PaginationComponent
-          pageTotal={pageNumbers}
+          pageTotal={Math.ceil(allCharacters.length / itemsPerPage)}
           changePageNumber={this.changePageNumber}
         />
+
+        }
       </Fragment>
     );
   }

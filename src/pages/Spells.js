@@ -35,7 +35,7 @@ class SpellsPage extends Component {
     let { allSpells } = this.props;
     let { pageNumbers, itemsPerPage, filteredData } = this.state;
     if(allSpells) {
-      let newPageTotal = Math.ceil(filteredData.length / e.target.value);
+      let newPageTotal = Math.ceil(filteredData ? filteredData.length : allSpells.length / e.target.value);
       this.setState({
         itemsPerPage: e.target.value,
         pageNumbers: newPageTotal
@@ -61,10 +61,6 @@ class SpellsPage extends Component {
     });
   }
 
-  componentDidUpdate(prevState, nextProps) {
-
-  }
-
   componentDidMount() {
     let { allSpells } = this.props;
     if(!allSpells)
@@ -80,7 +76,7 @@ class SpellsPage extends Component {
           onChangeText={this.onChangeText}
           handleItemsChange={this.handleItemsChange}
         />
-        {filteredData ? filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
+        {allSpells && !filteredData && allSpells.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
           return (
             <Container key={index}>
               <SpellContainer key={index}
@@ -89,11 +85,25 @@ class SpellsPage extends Component {
             </Container>
           )
         })
-        :  <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>}
+        }
+        {filteredData && filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
+          return (
+            <Container key={index}>
+              <SpellContainer key={index}
+                              {...item}
+              />
+            </Container>
+          )
+        })
+        }
+        {!allSpells && <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>}
+        {allSpells &&
         <PaginationComponent
-          pageTotal={pageNumbers}
+          pageTotal={Math.ceil(allSpells.length / itemsPerPage)}
           changePageNumber={this.changePageNumber}
         />
+
+        }
       </Fragment>
     );
   }
