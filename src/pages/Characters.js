@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import CharacterContainer from '../components/characterContainer';
 import * as actionCreators from '../store/info/infoActions';
 
 
@@ -11,7 +12,7 @@ class CharactersPage extends Component {
         <h1>Harry Potter Characters Page</h1>
         {allCharacters && allCharacters.map((item, index) => {
           return (
-            <p key={index}>{item.name}</p>
+            <CharacterContainer key={index} {...item} />
           )
         })
         }
@@ -20,7 +21,9 @@ class CharactersPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllCharacters();
+    let { allCharacters } = this.props;
+    if(!allCharacters)
+      this.props.getAllCharacters();
   }
 }
 

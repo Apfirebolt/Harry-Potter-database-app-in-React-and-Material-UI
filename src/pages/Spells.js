@@ -1,11 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import SpellContainer from '../components/spellContainer';
 import * as actionCreators from '../store/info/infoActions';
 
 
 class SpellsPage extends Component {
   componentDidMount() {
-    this.props.getAllSpells();
+    let { allSpells } = this.props;
+    if(!allSpells)
+      this.props.getAllSpells();
   }
   render() {
     let { allSpells } = this.props;
@@ -14,7 +17,9 @@ class SpellsPage extends Component {
         <h1>Harry Potter Spells Page</h1>
         {allSpells && allSpells.map((item, index) => {
           return (
-            <p key={index}>{item.spell}</p>
+            <SpellContainer key={index}
+                            {...item}
+            />
           )
         })
         }
