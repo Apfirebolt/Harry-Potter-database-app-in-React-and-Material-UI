@@ -1,68 +1,40 @@
+# A Pokemon Battle Arena Database Application in React using Material UI design.
+
+A Pokemon database application using the open source API provided by pokeapi.com. I'd highly recommend using this open 
+API, these people are doing really awesome job. The application would display
+information related to pokemon like pokemon names, pokemon moves,
+pokemon items and more in a component and pages based modular design in React JS. It is built
+on top of Material UI kit.
+
+## Getting Started
+
+* If you have worked with React and npm projects before, you'd know the procedure is fairly simply. Take the clone of the project, run 'npm install' and then
+type in 'npm start'. It's the only script in this project thus far.
+
+* For people not coming from node background, you need to install Node.js
+runtime environment on your system and then install packages and using it to run the project following the steps described above. 
+
+
+## Built With
+
+* [React JS](https://reactjs.org/)
+* [Material UI](https://material-ui.com/)
+* [React Redux](https://redux.js.org/)
+* [HTML + CSS + SCSS](https://www.w3schools.com/html/html_css.asp) - Used to generate RSS Feeds
+
+## Authors
+
+* **Amit Prafulla (APFirebolt)** - (http://amitprafull.com/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Screenshots
+
+Please find some of the screenshots of the application. Below is the screenshot depicting search pokemon page with
+applied filters.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
