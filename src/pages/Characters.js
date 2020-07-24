@@ -28,16 +28,19 @@ class CharactersPage extends Component {
   changePageNumber(e) {
     let { startIndex, itemsPerPage } = this.state;
     let newStartIndex = (e.target.value - 1) * itemsPerPage;
+    console.log('Change page called : ', e.target.value, newStartIndex);
+
     this.setState({
       startIndex: newStartIndex
     })
   }
 
   handleItemsChange(e) {
+    console.log('Items changed ', e.target.value);
     let { allCharacters } = this.props;
     let { pageNumbers, itemsPerPage, filteredData } = this.state;
     if(allCharacters) {
-      let newPageTotal = Math.ceil(filteredData.length ? filteredData.length : allCharacters.length / e.target.value);
+      let newPageTotal = Math.ceil(filteredData ? filteredData.length : allCharacters / e.target.value);
       this.setState({
         itemsPerPage: e.target.value,
         pageNumbers: newPageTotal
@@ -63,7 +66,6 @@ class CharactersPage extends Component {
       pageNumbers: newPageTotal
     });
   }
-
   render() {
     let { allCharacters } = this.props;
     let { searchText, filteredData, pageNumbers, startIndex, itemsPerPage } = this.state;
@@ -73,6 +75,8 @@ class CharactersPage extends Component {
         <SearchFilterContainer
           onChangeText={this.onChangeText}
           handleItemsChange={this.handleItemsChange}
+          searchText={searchText}
+          itemsPerPage={itemsPerPage}
         />
         {filteredData && filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
           return (
@@ -84,29 +88,15 @@ class CharactersPage extends Component {
           )
         })
         }
-
-        {!filteredData && allCharacters && allCharacters.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
-          return (
-            <Container key={index}>
-              <CharacterContainer key={index}
-                                  {...item}
-              />
-            </Container>
-          )
-        })
+        {!allCharacters && <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>
         }
-
-        {!allCharacters &&
-          <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>
-        }
-
         {allCharacters &&
         <PaginationComponent
-          pageTotal={Math.ceil(allCharacters.length / itemsPerPage)}
+          pageTotal={filteredData ? Math.ceil(filteredData.length / itemsPerPage) : Math.ceil(allCharacters.length / itemsPerPage)}
           changePageNumber={this.changePageNumber}
         />
-
         }
+
       </Fragment>
     );
   }

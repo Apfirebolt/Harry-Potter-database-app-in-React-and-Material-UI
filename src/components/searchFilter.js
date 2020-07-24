@@ -25,6 +25,7 @@ export default function SearchFilter(props) {
         id="page-number-id"
         label="Number of Items per page"
         onChange={props.handleItemsChange}
+        value={props.itemsPerPage}
       >
         <MenuItem value={5}>Five</MenuItem>
         <MenuItem value={10}>Ten</MenuItem>
@@ -37,5 +38,7 @@ export default function SearchFilter(props) {
 
 SearchFilter.propTypes = {
   onChangeText: PropTypes.func.isRequired,
-  handleItemsChange: PropTypes.func.isRequired
+  handleItemsChange: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
+  itemsPerPage: PropTypes.number.isRequired
 };

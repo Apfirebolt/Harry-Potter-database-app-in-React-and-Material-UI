@@ -32,6 +32,7 @@ class SpellsPage extends Component {
   }
 
   handleItemsChange(e) {
+    console.log('Item value is : ', e.target.value);
     let { allSpells } = this.props;
     let { pageNumbers, itemsPerPage, filteredData } = this.state;
     if(allSpells) {
@@ -75,17 +76,9 @@ class SpellsPage extends Component {
         <SearchFilterContainer
           onChangeText={this.onChangeText}
           handleItemsChange={this.handleItemsChange}
+          searchText={searchText}
+          itemsPerPage={itemsPerPage}
         />
-        {allSpells && !filteredData && allSpells.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
-          return (
-            <Container key={index}>
-              <SpellContainer key={index}
-                              {...item}
-              />
-            </Container>
-          )
-        })
-        }
         {filteredData && filteredData.slice(startIndex, startIndex + itemsPerPage).map((item, index) => {
           return (
             <Container key={index}>
@@ -93,16 +86,16 @@ class SpellsPage extends Component {
                               {...item}
               />
             </Container>
-          )
-        })
+            )
+          })
         }
-        {!allSpells && <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>}
+        {!allSpells && <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>
+        }
         {allSpells &&
         <PaginationComponent
-          pageTotal={Math.ceil(allSpells.length / itemsPerPage)}
+          pageTotal={filteredData ? Math.ceil(filteredData.length / itemsPerPage) : Math.ceil(allSpells.length / itemsPerPage)}
           changePageNumber={this.changePageNumber}
         />
-
         }
       </Fragment>
     );
