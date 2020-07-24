@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/info/infoActions';
 import HouseContainer from '../components/houseContainer';
+import { CircularProgress } from '@material-ui/core';
 
 
 class HousesPage extends Component {
@@ -14,7 +15,7 @@ class HousesPage extends Component {
     let { allHouses } = this.props;
     return (
       <Fragment>
-        <h1>Harry Potter Houses Page</h1>
+        <h1>Harry Potter Houses</h1>
         {allHouses ? allHouses.map((item, index) => {
           return (
             <HouseContainer key={index}
@@ -22,7 +23,7 @@ class HousesPage extends Component {
             />
           )
         })
-        : null}
+        : <CircularProgress color="secondary" size="200px" style={{ textAlign: "center" }}/>}
       </Fragment>
     );
   }
