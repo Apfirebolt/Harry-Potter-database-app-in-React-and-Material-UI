@@ -1,0 +1,31 @@
+.pagination_container {
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    background-color: lightblue;
+    margin: 1rem auto;
+    padding: 0.5rem;
+
+    li {
+      color: indianred;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      background-color: #FFF;
+      box-shadow: 1px 1px 1px #FFF;
+      border-radius: 5px;
+      margin: 0.5rem;
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: aliceblue;
+        color: #282c34;
+        transition: all 0.4s ease-out;
+      }
+    }
+  }
+  p {
+    color: darkblue;
+  }
+}
