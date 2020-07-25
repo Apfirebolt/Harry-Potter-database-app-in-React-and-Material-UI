@@ -68,16 +68,3 @@ export default function CharacterContainer(props) {
     </Card>
   );
 }
-
-/*
-bloodStatus: "half-blood"
-deathEater: false
-dumbledoresArmy: true
-house: "Hufflepuff"
-ministryOfMagic: false
-name: "Hannah Abbott"
-orderOfThePhoenix: false
-role: "student"
-school: "Hogwarts School of Witchcraft and Wizardry"
-species: "human"
- */
